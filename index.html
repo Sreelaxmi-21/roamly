@@ -1,30 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roamly | Travel Discovery</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Discover destinations, save favourites and plan your next escape.">
+
+    <title>Roamly | Find Your Next Escape</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
-  <header>
-    <h2>roamly.</h2>
-    <nav><a href="#home">Home</a> <a href="#places">Destinations</a></nav>
-  </header>
 
-  <main id="home">
-    <p>YOUR NEXT ADVENTURE STARTS HERE</p>
-    <h1>Find your next escape.</h1>
-    <p>Little trips. Big memories. Discover places worth dreaming about.</p>
-    <a href="#places">Explore destinations ↓</a>
+<header class="navbar">
 
-    <section id="places">
-      <h2>Somewhere to go</h2>
-      <article><h3>Udaipur, India</h3><p>City of Lakes · Culture and heritage</p></article>
-      <article><h3>Bali, Indonesia</h3><p>Island views · Tropical escapes</p></article>
-      <article><h3>Rome, Italy</h3><p>Historic streets · Timeless beauty</p></article>
+    <a class="logo" href="#home">
+        ✈ Roamly<span>.</span>
+    </a>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#explore">Explore</a>
+        <a href="#planner">Trip Planner</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <a class="nav-cta" href="#explore">
+        Find your escape ↗
+    </a>
+
+</header>
+
+
+<main>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-copy">
+
+            <p class="eyebrow">
+                YOUR NEXT ADVENTURE STARTS HERE
+            </p>
+
+            <h1>
+                Go somewhere<br>
+                <span>that moves you.</span>
+            </h1>
+
+            <p class="hero-text">
+                Find your next favourite place, save the destinations
+                you love, and start planning an escape worth remembering.
+            </p>
+
+            <div class="hero-actions">
+
+                <a class="button" href="#explore">
+                    Explore destinations →
+                </a>
+
+                <button
+                    class="button button-light"
+                    id="surpriseButton"
+                    type="button">
+                    🎲 Surprise me
+                </button>
+
+            </div>
+
+            <p class="hero-note">
+                ✦ Collect moments, not things.
+            </p>
+
+        </div>
+
+
+        <div class="hero-visual"
+             role="img"
+             aria-label="Illustrated mountain landscape">
+
+            <div class="hero-sun"></div>
+
+            <div class="mountain one"></div>
+            <div class="mountain two"></div>
+            <div class="mountain three"></div>
+
+            <div class="hero-sticker">
+                THE WORLD<br>
+                IS YOURS TO<br>
+                DISCOVER ✨
+            </div>
+
+            <div class="hero-caption">
+                TAKE THE SCENIC ROUTE
+            </div>
+
+        </div>
+
     </section>
-  </main>
-  <footer><p>Roamly — made for daydreamers.</p></footer>
+
+
+    <!-- DESTINATION EXPLORER -->
+
+    <section class="section explore" id="explore">
+
+        <div class="section-top">
+
+            <div>
+
+                <p class="eyebrow">
+                    A LITTLE INSPIRATION
+                </p>
+
+                <h2>Where will you go next?</h2>
+
+                <p class="section-intro">
+                    Browse dreamy places and find the one that feels like you.
+                </p>
+
+            </div>
+
+            <div class="section-mark">
+                ✈️
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <label class="search-box">
+
+            <span aria-hidden="true">⌕</span>
+
+            <input
+                id="destinationSearch"
+                type="search"
+                placeholder="Search destination or country..."
+                aria-label="Search destinations">
+
+        </label>
+
+
+        <!-- CATEGORY FILTERS AND WISHLIST -->
+
+        <div class="filter-row">
+
+            <div class="filters" id="categoryFilters">
+
+                <button
+                    class="filter-button selected"
+                    data-category="All"
+                    type="button">
+                    All places
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-category="Culture"
+                    type="button">
+                    Culture
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-category="Beach"
+                    type="button">
+                    Beaches
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-category="Adventure"
+                    type="button">
+                    Adventure
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-category="City"
+                    type="button">
+                    City breaks
+                </button>
+
+            </div>
+
+
+            <label class="wishlist-toggle">
+
+                <input
+                    type="checkbox"
+                    id="favoritesOnly">
+
+                ♥ My wishlist
+
+            </label>
+
+        </div>
+
+
+        <!-- JAVASCRIPT CREATES DESTINATION CARDS HERE -->
+
+        <div
+            class="destination-grid"
+            id="destinationGrid"
+            aria-live="polite">
+        </div>
+
+        <p class="photo-note">
+            Photos require an internet connection.
+            Budget figures are illustrative estimates, not live prices.
+        </p>
+
+    </section>
+
+
+    <!-- TRIP PLANNER -->
+
+    <section class="section planner" id="planner">
+
+        <div class="planner-heading">
+
+            <p class="eyebrow">
+                MAKE IT HAPPEN
+            </p>
+
+            <h2>
+                Your next trip,
+                <span>taking shape.</span>
+            </h2>
+
+            <p class="section-intro">
+                Choose a destination and a few details
+                to get a simple estimated budget.
+            </p>
+
+        </div>
+
+
+        <div class="planner-layout">
+
+
+            <!-- TRIP INPUT FORM -->
+
+            <form id="tripForm" class="planner-form">
+
+                <label for="tripDestination">
+                    Destination
+                </label>
+
+                <select id="tripDestination" required>
+
+                    <option value="">
+                        Choose a destination
+                    </option>
+
+                </select>
+
+
+                <div class="form-row">
+
+                    <div>
+
+                        <label for="tripDays">
+                            Trip length (days)
+                        </label>
+
+                        <input
+                            id="tripDays"
+                            type="number"
+                            min="1"
+                            max="60"
+                            value="4"
+                            required>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="travellers">
+                            Travellers
+                        </label>
+
+                        <input
+                            id="travellers"
+                            type="number"
+                            min="1"
+                            max="20"
+                            value="2"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <label for="travelStyle">
+                    Travel style
+                </label>
+
+                <select id="travelStyle">
+
+                    <option value="budget">
+                        Budget-friendly
+                    </option>
+
+                    <option value="comfort" selected>
+                        Comfort
+                    </option>
+
+                    <option value="premium">
+                        Premium
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="button planner-submit"
+                    type="submit">
+                    Estimate my trip ↗
+                </button>
+
+
+                <p class="fine-print">
+                    Planning estimate only. Actual costs vary by dates,
+                    transport, accommodation and spending.
+                </p>
+
+            </form>
+
+
+            <!-- BUDGET RESULT -->
+
+            <div class="estimate-card">
+
+                <div class="estimate-icon">
+                    🧳
+                </div>
+
+                <p class="estimate-label">
+                    YOUR TRIP ESTIMATE
+                </p>
+
+                <h3 id="estimateAmount">
+                    Let's plan a getaway
+                </h3>
+
+                <p id="estimateDetails">
+                    Choose a destination and submit the form
+                    to see an estimated budget.
+                </p>
+
+                <div class="estimate-divider"></div>
+
+                <div class="estimate-bottom">
+
+                    <span>
+                        Good trips start with a plan.
+                    </span>
+
+                    <span>✦</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+
+    <section class="section about" id="about">
+
+        <p class="eyebrow">
+            THE STORY BEHIND ROAMLY
+        </p>
+
+        <h2>
+            Travel is more than a destination.
+        </h2>
+
+        <p>
+            Roamly is a small travel discovery experience built
+            to help curious explorers find inspiration, save
+            favourite places, and sketch out a future trip.
+        </p>
+
+        <a class="button" href="#explore">
+            Start exploring →
+        </a>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <a class="footer-logo" href="#home">
+        ✈ Roamly.
+    </a>
+
+    <p>
+        Made with curiosity and a love for travel · © 2026 Roamly
+    </p>
+
+    <a class="back-top" href="#home">
+        Back to top ↑
+    </a>
+
+</footer>
+
+
+<!-- NOTIFICATION MESSAGE -->
+
+<div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite">
+</div>
+
 </body>
 </html>
